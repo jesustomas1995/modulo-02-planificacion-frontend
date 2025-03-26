@@ -11,13 +11,13 @@ function App() {
   const queryClient = new QueryClient();
   return (
     <PrimeReactProvider>
-      {/* <LayoutProvider> */}
-      <QueryClientProvider client={queryClient}>
-        <UserProvider>
-          <RouterProvider router={router} />
-        </UserProvider>
-      </QueryClientProvider>
-      {/* </LayoutProvider> */}
+      {/* <MainLayout> */}
+        <QueryClientProvider client={queryClient}>
+          <UserProvider>
+            <RouterProvider router={router} />
+          </UserProvider>
+        </QueryClientProvider>
+      {/* </MainLayout> */}
     </PrimeReactProvider>
   );
 }
