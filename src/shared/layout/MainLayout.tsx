@@ -54,7 +54,7 @@ const MainLayout = () => {
     {
       label: "Usuario",
       icon: "pi pi-users",
-      command: () => router(`catalogo/categoria`),
+      command: () => router(`seguridad/usuario`),
     },
   ];
 
