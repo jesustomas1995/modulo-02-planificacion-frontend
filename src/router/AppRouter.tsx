@@ -7,6 +7,7 @@ import MarcaPage from "../module/catalogo/marca/MarcaPage";
 import ProductoPage from "../module/catalogo/producto/ProductoPage";
 import ProveedorPage from "@/module/catalogo/proveedor/ProveedorPage";
 import UsuarioPage from "@/module/seguridad/usuarios/UsuarioPage";
+import PresupuestoPage from "@/module/planificacion/presupuesto/PresupuestoPage";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,15 @@ const router = createBrowserRouter([
           {
             path: "usuario",
             Component: UsuarioPage, // Página de "No autorizado"
+          },
+        ],
+      },
+      {
+        path: "planificacion",
+        children: [
+          {
+            path: "presupuesto",
+            Component: PresupuestoPage, // Página de "No autorizado"
           },
         ],
       },

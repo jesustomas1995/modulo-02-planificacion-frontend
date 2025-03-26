@@ -1,4 +1,10 @@
-import { fetchList, create, update, remove } from "../services/ProductoService";
+import {
+  fetchList,
+  create,
+  update,
+  remove,
+} from "../services/PresupuestoService";
+import { DateTime } from "luxon";
 import { useCrud } from "@/common/generic/crud-generico";
 import { EstadoComponent } from "@/components";
 
@@ -6,7 +12,7 @@ import ActionComponent from "@/components/table/ActionComponent";
 import { useEffect } from "react";
 
 // Hook personalizado para manejar incidencia tipos
-const useProducto = () => {
+const usePresupuesto = () => {
   const {
     onHiddenDeleteDialog,
     toast,
@@ -37,7 +43,7 @@ const useProducto = () => {
     createFn: create, // Función para crear
     updateFn: update, // Función para actualizar
     removeFn: remove, // Función para eliminar
-    resourceName: "catalogo-producto", // Nombre del recurso
+    resourceName: "planificacion-presupuesto", // Nombre del recurso
     defaultFilters: {
       limit: 10,
       page: 1,
@@ -58,11 +64,15 @@ const useProducto = () => {
       body: (_: any, options: any) => options.rowIndex + 1,
     },
     { header: "Nombre", field: "nombre" },
-    { header: "Numero de Serie", field: "numberSerial" },
-    { header: "Numero de Parte", field: "numberPart" },
     { header: "Descripción", field: "descripcion" },
-    { header: "Categoría", field: "categoria.nombre" },
-    { header: "Marca", field: "marca.nombre" },
+    { header: "Monto", field: "monto" },
+    { header: "Sobrante", field: "sobrante" },
+    {
+      header: "Vencimiento",
+      field: "vencimiento",
+      body: (data: any) =>
+        DateTime.fromISO(data.vencimiento).toFormat("dd/MM/yyyy"),
+    },
     {
       header: "Estado",
       field: "registerActive",
@@ -116,4 +126,4 @@ const useProducto = () => {
     ColumnItems,
   };
 };
-export default useProducto;
+export default usePresupuesto;
