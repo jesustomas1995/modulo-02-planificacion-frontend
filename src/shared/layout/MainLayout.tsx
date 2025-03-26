@@ -46,7 +46,7 @@ const MainLayout = () => {
           command: () => router(`catalogo/producto`),
         },
         {
-          label: "Producto",
+          label: "Proveedor",
           command: () => router(`catalogo/proveedor`),
         },
       ],

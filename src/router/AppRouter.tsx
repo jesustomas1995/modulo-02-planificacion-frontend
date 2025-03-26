@@ -1,8 +1,11 @@
+import { createBrowserRouter } from "react-router";
+
+import MainLayout from "@/shared/layout/MainLayout";
+
 import CategoriaPage from "../module/catalogo/categoria/CategoriaPage";
 import MarcaPage from "../module/catalogo/marca/MarcaPage";
-import { createBrowserRouter } from "react-router";
-import MainLayout from "@/shared/layout/MainLayout";
 import ProductoPage from "../module/catalogo/producto/ProductoPage";
+import ProveedorPage from "@/module/catalogo/proveedor/ProveedorPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
           {
             path: "producto",
             Component: ProductoPage, // Página de "No autorizado"
+          },
+          {
+            path: "proveedor",
+            Component: ProveedorPage, // Página de "No autorizado"
           },
         ],
       },

@@ -1,6 +1,6 @@
 import gatewayClient from "@/api/gatewayClient"
 
-const PREFIX_SERVICE = "api/catalogo/producto"
+const PREFIX_SERVICE = "api/catalogo/proveedor"
 
 export interface IFechtFilter {
     page: number,
@@ -41,6 +41,7 @@ export const remove = async (id: number, estado: boolean): Promise<any> => {
     const response = await gatewayClient.patch(`${PREFIX_SERVICE}/${id}`, { registerActive: estado });
     return response.data;
 };
+
 
 export const fetchAll = async (): Promise<any> => {
     const response = await gatewayClient.post(`${PREFIX_SERVICE}/list`, {
