@@ -1,0 +1,140 @@
+.layout {
+    height: 100%;
+}
+
+.layout {
+    margin: 0;
+}
+
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #b91c1c 50%, #ef4444 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+.content {
+    // background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    left: 50%;
+    padding: 10vmin;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+// /* Fondo animado */
+// .login-container {
+//     background: linear-gradient(270deg, #740938, #af1740, #cc2b52, #de7c7d);
+//     background-size: 800% 800%;
+
+//     -webkit-animation: AnimationName 21s ease infinite;
+//     -moz-animation: AnimationName 21s ease infinite;
+//     animation: AnimationName 21s ease infinite;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//     overflow: hidden;
+//     position: relative;
+// }
+
+// @-webkit-keyframes AnimationName {
+//     0% {
+//         background-position: 0% 50%;
+//     }
+//     50% {
+//         background-position: 100% 50%;
+//     }
+//     100% {
+//         background-position: 0% 50%;
+//     }
+// }
+// @-moz-keyframes AnimationName {
+//     0% {
+//         background-position: 0% 50%;
+//     }
+//     50% {
+//         background-position: 100% 50%;
+//     }
+//     100% {
+//         background-position: 0% 50%;
+//     }
+// }
+// @keyframes AnimationName {
+//     0% {
+//         background-position: 0% 50%;
+//     }
+//     50% {
+//         background-position: 100% 50%;
+//     }
+//     100% {
+//         background-position: 0% 50%;
+//     }
+// }
+
+.login-form {
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.p-float-label label {
+    color: #ffffff;
+}
+
+.p-inputtext {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.p-button-primary {
+    width: 100%;
+    background-color: #d72920 !important;
+    border: none;
+    color: #ffffff;
+}
+
+.p-input-icon-left > .p-password > .p-inputtext{
+    padding-left: 35px;
+}
