@@ -14,9 +14,10 @@ import {
   Dropdown,
 } from "@/components/primereact";
 import { useState } from "react";
+import { fetchAll as presupuestoAllService } from "../../presupuesto/services/PresupuestoService";
 import { fetchAll as productosAllService } from "../../../catalogo/producto/services/ProductoService";
 import { fetchAll as proveedorAllService } from "../../../catalogo/proveedor/services/ProveedorService";
-import { fetchById as cotizacionById } from "../services/CotizacionService";
+import { fetchById as compraById } from "../services/CompraService";
 
 interface DeleteItemProps {
   onSubmit: Function;
@@ -34,6 +35,7 @@ const productoSchema = yup.object({
 
 const validationSchema = yup.object({
   id: yup.number().nullable(),
+  presupuestoId: yup.number().required(),
   proveedorId: yup.number().nullable(),
   detalle: yup
     .array()
@@ -50,6 +52,7 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
 }) => {
   const [productoIndex, productoIndexSet] = useState(-1);
   const [productos, productosSet] = useState([]);
+  const [presupuestos, presupuestosSet] = useState([]);
   const [proveedores, proveedoresSet] = useState([]);
   const {
     control: controlProduct,
@@ -62,7 +65,7 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
   } = useForm({
     resolver: yupResolver(productoSchema),
   });
-  const initialValueProduct = (e: any | null = null) => {
+  const initialValueProduct = (e: any) => {
     if (e) e.preventDefault();
     resetProduct({
       productoId: undefined,
@@ -155,16 +158,20 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
     proveedorAllService().then((data) => {
       proveedoresSet(data.data.items);
     });
-    initialValueProduct();
+    presupuestoAllService().then((data) => {
+      presupuestosSet(data.data.items);
+    });
+    initialValueProduct(null);
     reset({
       id: data?.id || null,
-      proveedorId: data?.id || null,
+      proveedorId: data?.proveedor.id || null,
+      presupuestoId: data?.presupuesto.id || null,
       detalle: data?.detalle || [],
     });
     // llamar a servicio detalle de cotización
     if (data?.id)
-      cotizacionById(data?.id).then((resp) => {
-        const _tmp = resp.data.cotizacionDetalle.map((item: any) => {
+      compraById(data?.id).then((resp) => {
+        const _tmp = resp.data.compraDetalle.map((item: any) => {
           return {
             productoId: item.producto.id,
             cantidad: item.cantidad,
@@ -213,7 +220,7 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
       }
       if (isReset) {
         productoIndexSet(-1);
-        initialValueProduct();
+        initialValueProduct(null);
       }
     }
   };
@@ -264,6 +271,30 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
               )}
             />
             <ErrorMessage error={errors.proveedorId} />
+          </div>
+          {/* Campo nombre*/}
+          <div className="field">
+            <label htmlFor="presupuestoId" className="required">
+              Presupuesto
+            </label>
+            <Controller
+              name="presupuestoId"
+              control={control}
+              render={({ field }) => (
+                <Dropdown
+                  {...field}
+                  options={presupuestos.map((item: any) => ({
+                    label: item.nombre,
+                    value: item.id,
+                  }))}
+                  placeholder="Selecciona un presupuesto"
+                  className={classNames({
+                    "p-invalid": errors.presupuestoId,
+                  })}
+                />
+              )}
+            />
+            <ErrorMessage error={errors.presupuestoId} />
           </div>
           <Divider />
 

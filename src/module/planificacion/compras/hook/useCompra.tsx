@@ -3,7 +3,7 @@ import {
   create,
   update,
   remove,
-} from "../services/CotizacionService";
+} from "../services/CompraService";
 import { DateTime } from "luxon";
 import { useCrud } from "@/common/generic/crud-generico";
 import { EstadoComponent } from "@/components";
@@ -12,7 +12,7 @@ import ActionComponent from "@/components/table/ActionComponent";
 import { useEffect } from "react";
 
 // Hook personalizado para manejar incidencia tipos
-const usecotizacion = () => {
+const useCompra = () => {
   const {
     onHiddenDeleteDialog,
     toast,
@@ -129,4 +129,4 @@ const usecotizacion = () => {
     ColumnItems,
   };
 };
-export default usecotizacion;
+export default useCompra;

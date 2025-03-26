@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Menubar } from "primereact/menubar";
 import { Divider } from "primereact/divider";
@@ -22,7 +22,7 @@ const MainLayout = () => {
         },
         {
           label: "Compras",
-          command: () => router(`catalogo/categoria`),
+          command: () => router(`planificacion/compras`),
         },
       ],
     },
