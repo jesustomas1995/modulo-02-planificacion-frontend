@@ -8,6 +8,7 @@ import ProductoPage from "../module/catalogo/producto/ProductoPage";
 import ProveedorPage from "@/module/catalogo/proveedor/ProveedorPage";
 import UsuarioPage from "@/module/seguridad/usuarios/UsuarioPage";
 import PresupuestoPage from "@/module/planificacion/presupuesto/PresupuestoPage";
+import CotizacionPage from "@/module/planificacion/cotizacion/CotizacionPage";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: "presupuesto",
             Component: PresupuestoPage, // Página de "No autorizado"
+          },
+          {
+            path: "cotizacion",
+            Component: CotizacionPage, // Página de "No autorizado"
           },
         ],
       },

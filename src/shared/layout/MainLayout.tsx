@@ -18,7 +18,7 @@ const MainLayout = () => {
         },
         {
           label: "Cotizaciones",
-          command: () => router(`catalogo/categoria`),
+          command: () => router(`planificacion/cotizacion`),
         },
         {
           label: "Compras",
