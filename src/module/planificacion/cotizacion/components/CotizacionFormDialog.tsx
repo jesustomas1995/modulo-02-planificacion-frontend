@@ -158,13 +158,13 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
     initialValueProduct();
     reset({
       id: data?.id || null,
-      proveedorId: data?.id || null,
+      proveedorId: data?.proveedor.id || null,
       detalle: data?.detalle || [],
     });
     // llamar a servicio detalle de cotización
     if (data?.id)
       cotizacionById(data?.id).then((resp) => {
-        const _tmp = resp.data.cotizacionDetalle.map((item: any) => {
+        const _tmp = resp.data?.cotizacionDetalle.map((item: any) => {
           return {
             productoId: item.producto.id,
             cantidad: item.cantidad,

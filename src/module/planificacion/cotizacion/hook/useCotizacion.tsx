@@ -10,6 +10,7 @@ import { EstadoComponent } from "@/components";
 
 import ActionComponent from "@/components/table/ActionComponent";
 import { useEffect } from "react";
+import { numeroFormateado } from "@/common/util/formatDecimal";
 
 // Hook personalizado para manejar incidencia tipos
 const usecotizacion = () => {
@@ -69,7 +70,7 @@ const usecotizacion = () => {
       header: "Proveedor -  Representante Legal",
       field: "proveedor.representanteLegal",
     },
-    { header: "Total(Bs.)", field: "total" },
+    { header: "Total(Bs.)", field: "total",     body: (data: any) => numeroFormateado(data.total), },
     {
       header: "Registro",
       field: "createdAt",
