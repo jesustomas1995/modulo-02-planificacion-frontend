@@ -11,12 +11,12 @@ const ActionComponent: React.FC<{
   return (
     <>
       <div className="flex justify-content-left column-gap-2">
-        <Button
+        {/* <Button
           className="p-button-rounded"
           icon="pi pi-eye"
           onClick={onShowView}
           tooltip="Click para visualizar"
-        />
+        /> */}
         <Button
           className="p-button-rounded"
           severity="success"

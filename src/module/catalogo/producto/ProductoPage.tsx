@@ -3,8 +3,8 @@ import { DataTable } from "primereact/datatable";
 import { Toast } from "primereact/toast";
 import TableSkeleton from "@/components/table/DataTableSkeletonComponent";
 import DeleteItemComponent from "@/components/table/DeletedDialogComponent";
-import useCategoria from "./hook/useCategoria";
-import FormItemComponent from "./components/CategoriaFormDialog";
+import useProducto from "./hook/useProducto";
+import FormItemComponent from "./components/ProductoFormDialog";
 import ToolbarComponent from "@/components/table/ToolBarComponent";
 
 import HeaderComponent from "@/components/table/HeaderComponent";
@@ -31,7 +31,7 @@ const CategoriaPage = () => {
     formDataDialog,
     formMessageDialog,
     ColumnItems,
-  } = useCategoria();
+  } = useProducto();
 
   return (
     <div className="grid card grid-nogutter gap-3">
@@ -39,13 +39,11 @@ const CategoriaPage = () => {
       <div className="col-12">
         <ToolbarComponent
           onShowForm={() => onShowFormDialog(null)}
-          title="Catalogo - Categoria"
+          title="Catalogo - Productos"
         />
       </div>
       <div className="col-12">
-        <HeaderComponent
-          refetch={refetch}
-        />
+        <HeaderComponent refetch={refetch} />
       </div>
       <div className="col-12 p-0">
         {isLoading || isFetching ? (

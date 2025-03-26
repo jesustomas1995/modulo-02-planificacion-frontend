@@ -2,6 +2,7 @@ import CategoriaPage from "../module/catalogo/categoria/CategoriaPage";
 import MarcaPage from "../module/catalogo/marca/MarcaPage";
 import { createBrowserRouter } from "react-router";
 import MainLayout from "@/shared/layout/MainLayout";
+import ProductoPage from "../module/catalogo/producto/ProductoPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
           {
             path: "marca",
             Component: MarcaPage, // Página de "No autorizado"
+          },
+          {
+            path: "producto",
+            Component: ProductoPage, // Página de "No autorizado"
           },
         ],
       },

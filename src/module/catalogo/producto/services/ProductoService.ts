@@ -1,6 +1,6 @@
 import gatewayClient from "@/api/gatewayClient"
 
-const PREFIX_SERVICE = "api/catalogo/categoria"
+const PREFIX_SERVICE = "api/catalogo/producto"
 
 export interface IFechtFilter {
     page: number,

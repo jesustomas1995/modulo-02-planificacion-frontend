@@ -1,9 +1,4 @@
-import {
-  fetchList,
-  create,
-  update,
-  remove,
-} from "../services/CategoriaService";
+import { fetchList, create, update, remove } from "../services/ProductoService";
 import { useCrud } from "@/common/generic/crud-generico";
 import { EstadoComponent } from "@/components";
 
@@ -11,7 +6,7 @@ import ActionComponent from "@/components/table/ActionComponent";
 import { useEffect } from "react";
 
 // Hook personalizado para manejar incidencia tipos
-const useCategoria = () => {
+const useProducto = () => {
   const {
     onHiddenDeleteDialog,
     toast,
@@ -42,11 +37,11 @@ const useCategoria = () => {
     createFn: create, // Función para crear
     updateFn: update, // Función para actualizar
     removeFn: remove, // Función para eliminar
-    resourceName: "catalogo-categoria", // Nombre del recurso
+    resourceName: "catalogo-producto", // Nombre del recurso
     defaultFilters: {
       limit: 10,
       page: 1,
-    //   where: {},
+      //   where: {},
     },
   });
 
@@ -62,12 +57,18 @@ const useCategoria = () => {
       width: "3rem",
       body: (_: any, options: any) => options.rowIndex + 1,
     },
-    { header: "Nombre del estado de incidencia", field: "nombre" },
+    { header: "Nombre", field: "nombre" },
+    { header: "Numero de Serie", field: "numberSerial" },
+    { header: "Numero de Parte", field: "numberPart" },
     { header: "Descripción", field: "descripcion" },
+    { header: "Categoría", field: "categoria.nombre" },
+    { header: "Marca", field: "marca.nombre" },
     {
       header: "Estado",
-      field: "color",
-      body: (data: any) => <EstadoComponent registerActive={data.is_deleted} />,
+      field: "registerActive",
+      body: (data: any) => (
+        <EstadoComponent registerActive={data.registerActive} />
+      ),
     },
     {
       header: "Acciones",
@@ -81,7 +82,7 @@ const useCategoria = () => {
             onShowDeleteDialog({
               id: data.id,
               title: data.nombre,
-              is_deleted: data.is_deleted,
+              registerActive: data.registerActive,
             })
           }
         />
@@ -117,4 +118,4 @@ const useCategoria = () => {
     ColumnItems,
   };
 };
-export default useCategoria;
+export default useProducto;
