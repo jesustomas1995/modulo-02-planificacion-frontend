@@ -10,7 +10,7 @@ const ActionComponent: React.FC<{
 }> = ({ onShowForm, onShowDelete, onShowView }) => {
   return (
     <>
-      <div className="flex justify-content-center column-gap-2">
+      <div className="flex justify-content-left column-gap-2">
         <Button
           className="p-button-rounded"
           icon="pi pi-eye"

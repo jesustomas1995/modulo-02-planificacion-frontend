@@ -62,25 +62,26 @@ const useCategoria = () => {
       width: "3rem",
       body: (_: any, options: any) => options.rowIndex + 1,
     },
-    { header: "Nombre", field: "nombre" },
+    { header: "Nombre del estado de incidencia", field: "nombre" },
+    { header: "Descripción", field: "descripcion" },
     {
       header: "Estado",
-      field: "registerActive",
-      body: (data: any) => (
-        <EstadoComponent registerActive={data.registerActive} />
-      ),
+      field: "color",
+      body: (data: any) => <EstadoComponent registerActive={data.is_deleted} />,
     },
     {
       header: "Acciones",
       field: "acciones",
       body: (data: any) => (
         <ActionComponent
+          onAllowPermissionsForm={["CAT_INCIDENCIA_ESTADO_ACTUALIZAR"]}
+          onAllowPermissionsDelete={["CAT_INCIDENCIA_ESTADO_ELIMINAR"]}
           onShowForm={() => onShowFormDialog(data)}
           onShowDelete={() =>
             onShowDeleteDialog({
               id: data.id,
               title: data.nombre,
-              registerActive: data.registerActive,
+              is_deleted: data.is_deleted,
             })
           }
         />

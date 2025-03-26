@@ -3,7 +3,7 @@ import {
   create,
   update,
   remove,
-} from "../services/CategoriaService";
+} from "../services/MarcaService";
 import { useCrud } from "@/common/generic/crud-generico";
 import { EstadoComponent } from "@/components";
 
@@ -11,7 +11,7 @@ import ActionComponent from "@/components/table/ActionComponent";
 import { useEffect } from "react";
 
 // Hook personalizado para manejar incidencia tipos
-const useCategoria = () => {
+const useMarca = () => {
   const {
     onHiddenDeleteDialog,
     toast,
@@ -42,7 +42,7 @@ const useCategoria = () => {
     createFn: create, // Función para crear
     updateFn: update, // Función para actualizar
     removeFn: remove, // Función para eliminar
-    resourceName: "catalogo-categoria", // Nombre del recurso
+    resourceName: "catalogo-marca", // Nombre del recurso
     defaultFilters: {
       limit: 10,
       page: 1,
@@ -116,4 +116,4 @@ const useCategoria = () => {
     ColumnItems,
   };
 };
-export default useCategoria;
+export default useMarca;

@@ -38,7 +38,7 @@ export const update = async (id: number, updatedPost: any): Promise<any> => {
 };
 
 export const remove = async (id: number, estado: boolean): Promise<any> => {
-    const response = await gatewayClient.patch(`${PREFIX_SERVICE}/${id}`, { registerActive: estado });
+    const response = await gatewayClient.patch(`${PREFIX_SERVICE}/${id}`, { is_deleted: estado });
     return response.data;
 };
 

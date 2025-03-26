@@ -1,5 +1,3 @@
-import { useState } from "react";
-import "./App.css";
 // import { LayoutProvider } from "./shared/layout/context/layoutcontext";
 import { PrimeReactProvider } from "primereact/api";
 import router from "@/router/AppRouter";

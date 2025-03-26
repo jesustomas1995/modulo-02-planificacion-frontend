@@ -1,7 +1,12 @@
-import { Tag } from 'primereact/tag';
+import { Tag } from "primereact/tag";
 
 const EstadoComponent: React.FC<{
-    is_deleted: boolean;
-}> = ({ is_deleted }) => <Tag value={is_deleted ? 'Inactivo' : 'Activo'} severity={is_deleted ? 'info' : 'success'}></Tag>;
+  registerActive: boolean;
+}> = ({ registerActive }) => (
+  <Tag
+    value={!registerActive ? "Inactivo" : "Activo"}
+    severity={!registerActive ? "danger" : "secondary"}
+  ></Tag>
+);
 
 export default EstadoComponent;

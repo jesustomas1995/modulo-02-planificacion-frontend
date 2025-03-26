@@ -140,9 +140,9 @@ export const useCrud = ({
         setDeleteDialog(false);
     }, []);
 
-    const onShowDeleteDialog = ({ id, title, is_deleted }: { id: number, title: string, is_deleted: boolean }) => {
-        setDeleteMessageDialog(`¿Desea cambiar el estado a ${is_deleted ? 'Activo' : 'Inactivo'} de <strong>${title}</strong>?`);
-        setDeleteDataDialog({ id, estado: !is_deleted });
+    const onShowDeleteDialog = ({ id, title, registerActive }: { id: number, title: string, registerActive: boolean }) => {
+        setDeleteMessageDialog(`¿Desea cambiar el estado a ${!registerActive ? 'Activo' : 'Inactivo'} de <strong>${title}</strong>?`);
+        setDeleteDataDialog({ id, estado: !registerActive });
         setDeleteDialog(true);
     };
 
@@ -188,7 +188,11 @@ export const useCrud = ({
     };
 
     const mutationForm = useMutation({
-        mutationFn: (newData: any) => newData?.id ? updateFn(newData?.id, newData) : createFn(newData),
+        mutationFn: (newData: any) => {
+            const { id, ...body } = newData;
+            if (id) return updateFn(id, body)
+            else return createFn(body)
+        },
         onSuccess: (data: any) => {
             toast.current?.show({
                 severity: 'success',

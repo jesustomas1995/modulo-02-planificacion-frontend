@@ -23,6 +23,7 @@ interface DeleteItemProps {
 const validationSchema = yup.object().shape({
   id: yup.number().nullable(),
   nombre: yup.string().required().min(3).max(200),
+  descripcion: yup.string().notRequired(),
 });
 
 const FormItemComponent: React.FC<DeleteItemProps> = ({
@@ -45,6 +46,7 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
     reset({
       id: data?.id || null,
       nombre: data?.nombre || "",
+      descripcion: data?.descripcion || "",
     });
   }, [data, reset]);
 
@@ -59,15 +61,15 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
           width: "40rem",
         }}
       >
-        {/* <Divider /> */}
+        <Divider />
         <form
           onSubmit={handleSubmit((data) => onSubmit(data))}
           noValidate
           className="p-fluid"
         >
-          {/* Campo nombre*/}
+          {/* Campo nombre de la incidencia*/}
           <div className="field">
-            <label htmlFor="nombre">Nombre</label>
+            <label htmlFor="nombre">Estado de incidencia</label>
             <Controller
               name="nombre"
               control={control}
@@ -75,7 +77,7 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
                 <InputText
                   id="nombre"
                   {...field}
-                  placeholder="Ingresa el nombre"
+                  placeholder="Ingresa el nombre del estado de incidencia"
                   onChange={(event) =>
                     field.onChange(event.target.value.toUpperCase())
                   }
@@ -84,6 +86,25 @@ const FormItemComponent: React.FC<DeleteItemProps> = ({
               )}
             />
             <ErrorMessage error={errors.nombre} />
+          </div>
+
+          {/* Campo de Descripción */}
+          <div className="field">
+            <label htmlFor="descripcion">Descripción</label>
+            <Controller
+              name="descripcion"
+              control={control}
+              render={({ field }) => (
+                <InputTextarea
+                  id="descripcion"
+                  {...field}
+                  value={field.value || ""}
+                  placeholder=""
+                  className={classNames({ "p-invalid": errors.descripcion })}
+                />
+              )}
+            />
+            <ErrorMessage error={errors.descripcion} />
           </div>
 
           {/* Botones de Guardar y Cancelar */}

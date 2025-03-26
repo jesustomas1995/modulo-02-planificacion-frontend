@@ -19,6 +19,9 @@ const ToolbarComponent: React.FC<{
               label={textShowForm}
               onClick={() => onShowForm(null)}
               tooltip="Click para abrir formulario"
+              tooltipOptions={{
+                position: "bottom",
+              }}
             />
           )}
         </div>
