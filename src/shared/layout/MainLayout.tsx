@@ -1,27 +1,28 @@
 import React, { Component } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Menubar } from "primereact/menubar";
 import { Divider } from "primereact/divider";
+import { Button } from "primereact/button";
+
 const MainLayout = () => {
+  const router = useNavigate();
+
   const items = [
     {
       label: "Planificación",
-      icon: "pi pi-file",
+      icon: "pi pi-money-bill",
       items: [
         {
           label: "Presupuesto",
-          icon: "pi pi-plus",
-          command: () => {},
+          command: () => router(`catalogo/categoria`),
         },
         {
           label: "Cotizaciones",
-          icon: "pi pi-print",
-          command: () => {},
+          command: () => router(`catalogo/categoria`),
         },
         {
           label: "Compras",
-          icon: "pi pi-print",
-          command: () => {},
+          command: () => router(`catalogo/categoria`),
         },
       ],
     },
@@ -30,56 +31,39 @@ const MainLayout = () => {
     },
     {
       label: "Catalogo",
-      icon: "pi pi-cloud",
+      icon: "pi pi-th-large",
       items: [
         {
           label: "Categoría",
-          icon: "pi pi-cloud-download",
-          command: () => {},
+          command: () => router(`catalogo/categoria`),
         },
         {
           label: "Marca",
-          icon: "pi pi-cloud-upload",
-          command: () => {},
+          command: () => router(`catalogo/marca`),
         },
         {
           label: "Producto",
-          icon: "pi pi-cloud-upload",
-          command: () => {},
+          command: () => router(`catalogo/producto`),
+        },
+        {
+          label: "Producto",
+          command: () => router(`catalogo/proveedor`),
         },
       ],
     },
     {
       label: "Usuario",
-      icon: "pi pi-search",
-      command: () => {},
-    },
-    {
-      label: "Cerrar Sesión",
-      icon: "pi pi-search",
-      command: () => {},
+      icon: "pi pi-users",
+      command: () => router(`catalogo/categoria`),
     },
   ];
 
   const start = (
-    <img
-      alt="logo"
-      src="https://primefaces.org/cdn/primereact/images/logo.png"
-      height="40"
-      className="mr-2"
-    ></img>
+    <img alt="logo" src="/logo.png" height="40" className="mr-2"></img>
   );
   const end = (
     <div className="flex align-items-center gap-2">
-      {/* <InputText
-          placeholder="Search"
-          type="text"
-          className="w-8rem sm:w-auto"
-        />
-        <Avatar
-          image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png"
-          shape="circle"
-        /> */}
+      <Button label="Cerrar Sesión" severity="secondary" />
     </div>
   );
 
