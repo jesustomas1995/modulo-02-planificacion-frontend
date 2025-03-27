@@ -16,23 +16,12 @@ const useLogin = () => {
 
     const handleLoginSuccess = async (response: any) => {
         const result = parseJwt(response.data);
-        console.log("🔑 response... ", response);
         localStorage.setItem(USER_INFO_KEY, JSON.stringify(result));
         localStorage.setItem(TOKEN_KEY, response.data);
 
-        const decodedToken = jwtDecode<{ usuario_id: number; app_name: string }>(response.data);
-        const userId = decodedToken.usuario_id;
+        const decodedToken = jwtDecode<{ id: number; nombreCompleto: string }>(response.data);
+        const userId = decodedToken.id;
         localStorage.setItem(USUARIO_ID, String(userId));
-
-        if (Notification.permission === "default") {
-            Notification.requestPermission().then((permission) => {
-                if (permission === "granted") {
-                    // console.log("✅ Permiso de notificación concedido");
-                } else {
-                    console.warn("⚠️ Permiso de notificación denegado");
-                }
-            });
-        }
 
         toast.current?.show({
             severity: 'success',
@@ -45,8 +34,7 @@ const useLogin = () => {
             refreshUser();
             setTimeout(resolve, 1000);
         });
-
-        router('/dashboard');
+        router('/admin/planificacion/presupuesto');
     };
 
 
@@ -73,7 +61,7 @@ const useLogin = () => {
         setLoading(true);
         mutationForm.mutate({
             usuario: data.usuario,
-            contraseña: data.password,
+            password: data.password,
         });
     };
 

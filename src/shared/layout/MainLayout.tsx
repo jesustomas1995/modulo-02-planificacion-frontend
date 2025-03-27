@@ -63,7 +63,14 @@ const MainLayout = () => {
   );
   const end = (
     <div className="flex align-items-center gap-2">
-      <Button label="Cerrar Sesión" severity="secondary" />
+      <Button
+        label="Cerrar Sesión"
+        severity="secondary"
+        onClick={() => {
+          localStorage.clear();
+          router("/login");
+        }}
+      />
     </div>
   );
 

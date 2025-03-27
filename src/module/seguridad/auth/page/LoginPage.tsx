@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import "./Login.scss";
+import "./Login.css";
 import { classNames } from "primereact/utils";
 
 import { useForm, Controller } from "react-hook-form";
@@ -12,29 +12,17 @@ import useLogin from "../hook/useLogin";
 import { Toast } from "primereact/toast";
 import { Password } from "primereact/password";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+
+import { IconField } from "primereact/iconfield";
+import { InputIcon } from "primereact/inputicon";
 
 const validationSchema = yup.object().shape({
-  usuario: yup
-    .string()
-    .required()
-    .test(
-      "usuario-o-email",
-      'Debe ser un correo electrónico o un C.I. valido"',
-      (value) =>
-        /^[a-zA-Z0-9]{3,12}(-\d[A-Z])?$/.test(value) ||
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
-    )
-    .min(6)
-    .max(50),
+  usuario: yup.string().required().min(5),
   password: yup.string().required().min(6),
 });
 
 const LoginPage = () => {
   const { loading, onLogin, toast } = useLogin();
-  const [loadingCiudadania, setLoadingCiudadania] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const {
     control,
@@ -52,7 +40,6 @@ const LoginPage = () => {
   return (
     <>
       <Toast ref={toast} />
-
       {loading ? (
         <div
           className="flex justify-content-center align-items-center"
@@ -77,9 +64,9 @@ const LoginPage = () => {
               className="p-fluid flex flex-column "
             >
               <div className="flex flex-column align-items-center ">
-                <img src="/icon.svg" width="120" />
-                <h1 className="font-bold text-2xl">SISTEMA PLANIFICACION</h1>
-                <p className="text-color-secondary">
+                <img src="/logo.png" width="120" />
+                <h1 className="font-bold text-2xl">SISTEMA PLANIFICACIÓN</h1>
+                <p className="text-color-secondary my-1 mb-2">
                   Bienvenido a la <strong>Administración</strong>, aquí podrá
                   gestionar CATÁLOGOS, COMPRAS, COTIZACIÓN Y PRESUPUESTOS .
                 </p>
@@ -94,8 +81,8 @@ const LoginPage = () => {
                   control={control}
                   render={({ field }) => (
                     <>
-                      <span className="p-input-icon-left w-full">
-                        <i className="pi pi-user"></i>
+                      <IconField iconPosition="left">
+                        <InputIcon className="pi pi-user"> </InputIcon>
                         <InputText
                           autoComplete="off"
                           type="text"
@@ -103,9 +90,9 @@ const LoginPage = () => {
                           className={classNames({
                             "p-invalid": errors.usuario,
                           })}
-                          placeholder="Escriba su C.I. ó Correo Electrónico"
+                          placeholder="Escriba su usuario"
                         />
-                      </span>
+                      </IconField>
                     </>
                   )}
                 />
@@ -121,8 +108,8 @@ const LoginPage = () => {
                   control={control}
                   render={({ field }) => (
                     <>
-                      <span className="p-input-icon-left w-full">
-                        <i className="pi pi-key" style={{ zIndex: 1 }}></i>
+                      <IconField iconPosition="left">
+                        <InputIcon className="pi pi-key"> </InputIcon>
                         <Password
                           autoComplete="off"
                           placeholder="Escriba su contraseña"
@@ -133,7 +120,7 @@ const LoginPage = () => {
                           feedback={false}
                           toggleMask
                         />
-                      </span>
+                      </IconField>
                     </>
                   )}
                 />
