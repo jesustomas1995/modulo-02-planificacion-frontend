@@ -141,7 +141,7 @@ export const useCrud = ({
     }, []);
 
     const onShowDeleteDialog = ({ id, title, registerActive }: { id: number, title: string, registerActive: boolean }) => {
-        setDeleteMessageDialog(`¿Desea cambiar el estado a ${!registerActive ? 'Activo' : 'Inactivo'} de <strong>${title}</strong>?`);
+        setDeleteMessageDialog(`¿Desea Eliminar: <strong>${title}</strong>?`);
         setDeleteDataDialog({ id, estado: !registerActive });
         setDeleteDialog(true);
     };
