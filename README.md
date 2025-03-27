@@ -1,54 +1,29 @@
-# React + TypeScript + Vite
+## Proyecto React con Node.js 22.12.0, PrimeReact, CSS y Axios
+Descripción
+Este es un proyecto desarrollado en React que utiliza Node.js 22.12.0 como entorno de ejecución. Se han empleado PrimeReact para la interfaz de usuario, CSS para los estilos y Axios para el consumo de APIs.
+Este proyecto tiene la finalidad de administración el sistema de planificación con los siguientes apartados, catálogos, planificación, usuarios, con la finalidad de poder realizar cotizaciones y compras.
+Requisitos
+Antes de iniciar, asegúrate de tener instalado lo siguiente:
+Node.js 22.12.0
+npm o yarn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### Tecnologías Utilizadas
+* React: Biblioteca para la construcción de interfaces de usuario.
+* Node.js 22.12.0: Entorno de ejecución de JavaScript del lado del servidor.
+* PrimeReact: Conjunto de componentes UI para React.
+* CSS: Estilización del proyecto.
+* Axios: Cliente HTTP para la comunicación con APIs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### configuracion de variables de entorno
+en el proyecto raiz existe el archivo `example.env`, usted debe copiar este archivo y renombrarlo `.env` y modifique las variables para poder conectarse al backend que se consumirá los servicios
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Pasos de Instalación de paquetes o dependencias
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### comando para hacer correr el proyecto
+ ``` 
+ npm run dev
+ ```
